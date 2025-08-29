@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bosses Mais Difíceis de Elden Ring</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        
+        body {
+            background-color: #1a1a1a;
+            color: #f0f0f0;
+            line-height: 1.6;
+            padding: 20px;
+        }
+        
+        body.light-mode {
+            background-color: #f0f0f0;
+            color: #333;
+        }
+        
+        .theme-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: #8a0303;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 50px;
+            cursor: pointer;
+            z-index: 100;
+            font-weight: bold;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+        
+        .theme-toggle:hover {
+            background: #a50404;
+        }
+        
+        header {
+            text-align: center;
+            padding: 30px 0;
+            background-color: #2a0c0c;
+            border-bottom: 3px solid #8a0303;
+            margin-bottom: 30px;
+            border-radius: 8px;
+        }
+        
+        .light-mode header {
+            background-color: #d4af37;
+            border-bottom: 3px solid #b38728;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            color: #ffd700;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+        
+        .light-mode h1 {
+            color: #8a0303;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+        }
+        
+        .subtitle {
+            font-size: 1.2rem;
+            color: #d4af37;
+        }
+        
+        .light-mode .subtitle {
+            color: #8a0303;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .boss-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+        
+        .boss-card {
+            background: linear-gradient(145deg, #2c2c2c, #222);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+            transition: transform 0.3s ease;
+        }
+        
+        .light-mode .boss-card {
+            background: linear-gradient(145deg, #e6e6e6, #fff);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .boss-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .boss-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-bottom: 3px solid #8a0303;
+        }
+        
+        .light-mode .boss-image {
+            border-bottom: 3px solid #d4af37;
+        }
+        
+        .boss-info {
+            padding: 20px;
+        }
+        
+        .boss-name {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            color: #ffd700;
+        }
+        
+        .light-mode .boss-name {
+            color: #8a0303;
+        }
+        
+        .boss-description {
+            color: #ccc;
+            margin-bottom: 15px;
+            font-size: 0.95rem;
+        }
+        
+        .light-mode .boss-description {
+            color: #666;
+        }
+        
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            margin-top: 15px;
+            border-radius: 5px;
+        }
+        
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        
+        .difficulty {
+            display: flex;
+            align-items: center;
+            margin-top: 10px;
+        }
+        
+        .difficulty-label {
+            margin-right: 10px;
+            color: #d4af37;
+        }
+        
+        .light-mode .difficulty-label {
+            color: #8a0303;
+        }
+        
+        .difficulty-stars {
+            color: #ffd700;
+        }
+        
+        .light-mode .difficulty-stars {
+            color: #d4af37;
+        }
+        
+        .videos-section {
+            margin-top: 50px;
+            padding: 30px;
+            background: linear-gradient(145deg, #2c2c2c, #222);
+            border-radius: 10px;
+        }
+        
+        .light-mode .videos-section {
+            background: linear-gradient(145deg, #e6e6e6, #fff);
+        }
+        
+        .videos-title {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #ffd700;
+        }
+        
+        .light-mode .videos-title {
+            color: #8a0303;
+        }
+        
+        .videos-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+        
+        .video-item {
+            margin-bottom: 20px;
+        }
+        
+        .video-title {
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+            color: #d4af37;
+        }
+        
+        .light-mode .video-title {
+            color: #8a0303;
+        }
+        
+        footer {
+            text-align: center;
+            margin-top: 50px;
+            padding: 20px;
+            color: #888;
+            border-top: 1px solid #444;
+        }
+        
+        .light-mode footer {
+            color: #666;
+            border-top: 1px solid #ddd;
+        }
+        
+        @media (max-width: 768px) {
+            .boss-grid, .videos-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <button class="theme-toggle" onclick="toggleTheme()">Modo Claro</button>
+    
+    <div class="container">
+        <header>
+            <h1>Bosses Mais Difíceis de Elden Ring</h1>
+            <p class="subtitle">Os desafios mais épicos e desafiadores das Terras Intermédias</p>
+        </header>
+        
+        <div class="boss-grid">
+            <!-- Boss 1 - Malenia -->
+            <div class="boss-card">
+                <img src="https://image.api.playstation.com/vulcan/ap/rnd/202110/2000/aGWhp58FP070V6lgDDS5aBMd.png" alt="Malenia" class="boss-image">
+                <div class="boss-info">
+                    <h2 class="boss-name">Malenia, Lâmina de Miquella</h2>
+                    <p class="boss-description">Considerada por muitos o boss mais difícil do jogo base. Seus ataques rápidos, dano devastador e capacidade de se curar ao acertar golpes a tornam uma lenda entre os jogadores.</p>
+                    <div class="difficulty">
+                        <span class="difficulty-label">Dificuldade:</span>
+                        <span class="difficulty-stars">★★★★★</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Boss 2 - Radagon e Elden Beast -->
+            <div class="boss-card">
+                <img src="https://image.api.playstation.com/vulcan/ap/rnd/202110/2000/ph4KkDX4usF6qWfRfSVHtqR0.png" alt="Radagon e Elden Beast" class="boss-image">
+                <div class="boss-info">
+                    <h2 class="boss-name">Radagon e Elden Beast</h2>
+                    <p class="boss-description">O chefe final de Elden Ring é na verdade uma luta dupla. Primeiro contra Radagon, o Marido da Rainha Marika, seguido imediatamente pela Elden Beast, uma criatura cósmica que exige muita paciência e controle de stamina.</p>
+                    <div class="difficulty">
+                        <span class="difficulty-label">Dificuldade:</span>
+                        <span class="difficulty-stars">★★★★☆</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Boss 3 - Godfrey/Hoarah Loux -->
+            <div class="boss-card">
+                <img src="https://image.api.playstation.com/vulcan/ap/rnd/202110/2000/PHrD_YQOepJjIyB2RZc9cNx0.png" alt="Godfrey" class="boss-image">
+                <div class="boss-info">
+                    <h2 class="boss-name">Godfrey / Hoarah Loux</h2>
+                    <p class="boss-description">O primeiro Elden Lord começa como um guerreiro nobre com um machado, mas na segunda fase se transforma em Hoarah Loux, o Warrior, abandonando todas as regras de combate e atacando com fúria primal e golpes de wrestling devastadores.</p>
+                    <div class="difficulty">
+                        <span class="difficulty-label">Dificuldade:</span>
+                        <span class="difficulty-stars">★★★★☆</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Boss 4 - Godskin Duo -->
+            <div class="boss-card">
+                <img src="https://image.api.playstation.com/vulcan/ap/rnd/202110/2000/6cR6Q8XvjTe6g0jH9SYa8LQx.png" alt="Godskin Duo" class="boss-image">
+                <div class="boss-info">
+                    <h2 class="boss-name">Godskin Duo</h2>
+                    <p class="boss-description">Uma luta desafiadora contra dois bosses simultaneamente - o Godskin Apostle e o Godskin Noble. Sua coordenação e ataques complementares tornam esta uma das lutas mais frustrantes do jogo.</p>
+                    <div class="difficulty">
+                        <span class="difficulty-label">Dificuldade:</span>
+                        <span class="difficulty-stars">★★★★☆</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Boss 5 - Maliketh -->
+            <div class="boss-card">
+                <img src="https://image.api.playstation.com/vulcan/ap/rnd/202110/2000/6cR6Q8XvjTe6g0jH9SYa8LQx.png" alt="Maliketh" class="boss-image">
+                <div class="boss-info">
+                    <h2 class="boss-name">Maliketh, a Lâmina Negra</h2>
+                    <p class="boss-description">Este boss extremamente ágil possui ataques que reduzem a vida máxima do jogador temporariamente. Sua movimentação imprevisível e dano extremamente alto fazem dele um dos chefes mais desafiadores.</p>
+                    <div class="difficulty">
+                        <span class="difficulty-label">Dificuldade:</span>
+                        <span class="difficulty-stars">★★★★☆</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Boss 6 - Radahn -->
+            <div class="boss-card">
+                <img src="https://image.api.playstation.com/vulcan/ap/rnd/202110/2000/4a2bb580-9a2a-4b5a-9c5a-5e5b5e5b5e5b.png" alt="Radahn" class="boss-image">
+                <div class="boss-info">
+                    <h2 class="boss-name">Starscourge Radahn</h2>
+                    <p class="boss-description">General Radahn é uma luta épica em um campo de batalha aberto. Ele controla a gravidade, ataca com meteoros e monta seu cavalo apesar de seu tamanho colossal. Uma das lutas mais memoráveis do jogo.</p>
+                    <div class="difficulty">
+                        <span class="difficulty-label">Dificuldade:</span>
+                        <span class="difficulty-stars">★★★★☆</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Seção de Vídeos Separada -->
+        <div class="videos-section">
+            <h2 class="videos-title">Vídeos dos Bosses</h2>
+            <div class="videos-grid">
+                <!-- Vídeo 1 -maliketh, a lamina negra -->
+                <div class="video-item">
+                    <h3 class="video-title">Maliketh</h3>
+                    <div class="video-container">
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/LQ2vW_CTuAM?si=TYdId4v-K844aGjm" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                    </div>
+                </div>
+                
+                <!-- Vídeo 2 - godskin duo -->
+                <div class="video-item">
+                    <h3 class="video-title">godskin duo</h3>
+                    <div class="video-container">
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/2-uOtflNU8c?si=ZVux_AT5blcnM6WL" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                    </div>
+                </div>
+                
+                <!-- Vídeo 3 - radagon -->
+                <div class="video-item">
+                    <h3 class="video-title">radagon</h3>
+                    <div class="video-container">
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/cBG6fhP-qi8?si=Ie2zkvowHscbkDl3" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                    </div>
+                </div>
+                
+                <!-- Vídeo 4 - Godfrey -->
+                <div class="video-item">
+                    <h3 class="video-title">godfrey</h3>
+                    <div class="video-container">
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/GRc2rqDDBGk?si=ozJZqfE9lRd9ieTS" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                    </div>
+                </div>
+                
+                <!-- Vídeo 5 - Malenia, blade of miquella -->
+                <div class="video-item">
+                    <h3 class="video-title">Malenia</h3>
+                    <div class="video-container">
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/D_iqjI2p7F4?si=oauSBXjnqBUPK60Y" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                    </div>
+                </div>
+                
+                <!-- Vídeo 6 - Radahn -->
+                <div class="video-item">
+                    <h3 class="video-title">Starscourge Radahn</h3>
+                    <div class="video-container">
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/8A2_RVLXD6w?si=Kc_-7Cn71D-15_zt" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <footer>
+            <p>Catálogo de Bosses de Elden Ring - Todos os direitos reservados a FromSoftware</p>
+            <p>Este site é apenas para fins educacionais. quanto que ta valendo de nota professor, e não conte pro povo qual foi meu projeto.</p>
+        </footer>
+    </div>
+
+    <script>
+        function toggleTheme() {
+            document.body.classList.toggle('light-mode');
+            const button = document.querySelector('.theme-toggle');
+            if (document.body.classList.contains('light-mode')) {
+                button.textContent = 'Modo Escuro';
+            } else {
+                button.textContent = 'Modo Claro';
+            }
+        }
+    </script>
+</body>
+</html>
